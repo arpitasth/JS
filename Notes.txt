@@ -1,0 +1,5 @@
+Important Notes: 
+
+1) Arrow Functions: In Arrow functions, You can't assign a name instead you can store the arrow functions inside the const variables. We can also omit the curly braces.
+
+Example: const someVariableName = () => {}
