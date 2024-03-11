@@ -1,5 +1,50 @@
 Important Notes: 
 
 1) Arrow Functions: In Arrow functions, You can't assign a name instead you can store the arrow functions inside the const variables. We can also omit the curly braces.
+	If we don't have any arguments then empty pair of paranthesis is required. If We have exactly one argument then we can omit the left hand side paranthesis. If we have exactly
+	one expression then we can omit right hand side paranthesis. 
 
 Example: const someVariableName = () => {}
+
+2) Difference between functional declaration & functional expression?
+
+	Functional expression produces a value( A function object) which needs to be stored somewhere manually. 
+
+3) Let & Const create block scoped variables.
+
+4) REST operator: Rest operator is used to pass multiple arguments inside the function. We can pass many arguments to the functions without any restrictions. It will build a brand new 
+		array at function level with all those arguments. It always has to be the last argument of the list because the rest operator will always merge the arguments to the array
+		& you will never reach to your next argument. There should be only one rest operator in your argument list for the same reason. You can have multiple parameters before
+		rest operator.
+
+Example: const sumUp = (...numbers) => {
+		console.log(numbers);   
+	}
+
+sumUp(10, 20, 30, 40); // [10, 20, 30, 40]
+sumUp(20, 50, 90, 1000, 45, 78); // [20, 50, 90, 1000, 45, 78]
+
+Before the REST operator we had one pre-defined keyword which exactly works like REST operator that is 'arguments'.
+
+Example: const sumUp = function() {
+	     console.log(arguments);  // it acts like an array. Not recommended.
+	}
+
+sumUp(10, 20, 30, 40); // [10, 20, 30, 40]
+sumUp(20, 50, 90, 1000, 45, 78); // [20, 50, 90, 1000, 45, 78]
+	
+5) Callback function: A callback or callback function is a pointer/reference of another function that is passed as an argument to another function.
+
+Example: const sumUp = (cb, ...numbers) => {
+		let sum = 0;
+		for(const num of numbers) {
+		 sum += num;
+		}
+		cb(sum);
+	}
+
+	sumUp(resultHandler, 10, 20, 30, 40);
+
+	const resultHandler = (sum) => {
+		console.log('The sum of the numbers is: ', sum);
+	}

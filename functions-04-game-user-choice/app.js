@@ -5,9 +5,9 @@ const PAPER = 'PAPER';
 const SCISSORS = 'SCISSORS';
 const DEFAULT_USER_CHOICE = ROCK;
 
-const DRAW = 'DRAW!!';
-const PLAYER_WINS = 'PLAYER WINS!';
-const COMPUTER_WINS = 'COMPUTER WINS!';
+const RESULT_DRAW = 'DRAW!!';
+const RESULT_PLAYER_WINS = 'PLAYER WINS!';
+const RESULT_COMPUTER_WINS = 'COMPUTER WINS!';
 
 const gameIsRunning = false;
 
@@ -35,28 +35,59 @@ const getComputerChoice = () => {
   }
 }
 
-const startGame = (pChoice, cChoice) => {
-  if (
-      pChoice === PAPER && cChoice === ROCK || 
-      pChoice === SCISSORS && cChoice === PAPER ||
-      pChoice === ROCK && cChoice === SCISSORS 
-  ) {
-    alert(PLAYER_WINS);
-  } else if(pChoice === cChoice) {
-    alert(DRAW);
-  } else {
-    alert(COMPUTER_WINS);
-  }
-}
+const getWinner = (cChoice, pChoice = DEFAULT_USER_CHOICE) => 
+  pChoice === cChoice 
+  ? RESULT_DRAW 
+  : ((pChoice === PAPER && cChoice === ROCK) || 
+    (pChoice === SCISSORS && cChoice === PAPER) ||
+    (pChoice === ROCK && cChoice === SCISSORS))
+  ? RESULT_PLAYER_WINS
+  : RESULT_COMPUTER_WINS;
 
-startGameBtn.addEventListener('click', function() {
+startGameBtn.addEventListener('click', () => {
+  
   if(gameIsRunning) {
     return;
   }
-  console.log('Game is starting...');
   this.gameIsRunning = true;
   const playerSelection = getPlayerChoice();
   const computerSelection = getComputerChoice();
-  console.log(playerSelection, computerSelection);
-  startGame(playerSelection, computerSelection);
+  let winner;
+  if(playerSelection) {
+    winner = getWinner(playerSelection, computerSelection);
+  } else {
+    winner = getWinner(computerSelection);
+  }
+  let message = `You picked ${playerSelection || DEFAULT_USER_CHOICE}, computer picked ${computerSelection}, therefore you`;
+  if(winner === RESULT_DRAW) {
+    message = message + ' had a draw.';
+  } else if(winner === RESULT_PLAYER_WINS) {
+    message =  message + ' won.';
+  } else if(winner === RESULT_COMPUTER_WINS) {
+    message = message + ' lost.';
+  }
+  alert(message);
+  this.gameIsRunning = false;
+ 
 });
+
+const combine = (cb, operation, ...numbers) => {
+  let sum = 0;
+  for(const num of numbers) {
+    if(operation === 'ADD')
+      sum += num;
+    if(operation === 'SUBTRACT')
+      sum -= num;
+  }
+  cb(sum);
+}
+
+const resultHandler = (message, result) => {
+  alert(message +' ' + result);
+}
+
+combine(resultHandler.bind(this, 'The result after adding all numbers is:'), 'ADD', 1, 5, 10, -3);
+combine(resultHandler.bind(this, 'The result after subtracting all numbers is:'), 'SUBTRACT', 1, 5, 10, -3);
+combine(resultHandler.bind(this, 'The result after subtracting all numbers is:'), 'SUBTRACT', 1, 5, 10, -3);
+
+
