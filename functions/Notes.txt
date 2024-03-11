@@ -48,3 +48,5 @@ Example: const sumUp = (cb, ...numbers) => {
 	const resultHandler = (sum) => {
 		console.log('The sum of the numbers is: ', sum);
 	}
+
+6) bind() : It will create a new reference of the function which will return to you. Which will be pre-configured regarding the argument it received.
