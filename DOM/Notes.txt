@@ -1,0 +1,5 @@
+DOM: Javascript is a hosted language, Browser provides the Env to run the js code. It provides the JS engine(V8) to run the code on browser. Browser also provides bunch of API's.
+     Browser exposes the functionality to let the JS to interact with rendered HTML code. That's called DOM (Document Object Model).
+
+     document is the root DOM Node.
+

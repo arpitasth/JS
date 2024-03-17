@@ -1,0 +1,41 @@
+cNote:
+
+1) Array Like Object: OBjects that have a length property & use indexes to access items.
+
+2) Array.form() : Method used to convert array like iterable to an array which is not an array yet.
+
+3) Unshift(): Add item at the beginning of the array or we could say shift all the elements right side of the array. 
+
+4) shift(): Delete first element from array. Shift all the elements on the left side of array. 
+
+Note: Push() & Pop() are way faster than shift & unshift.
+
+5) Splice(): It can be used to add/remove items using the indexes. And it returns the removed elements.
+
+6) slice(): It return a brand new array using the old array. Slice can also be used for selecting ranges.
+
+7) concat(): It pulls out all the items from second array, Add those items to existing array & returns a brand new Array with new memory Location.
+
+8) indexOf(): Return you an index from right. It doesn't work for refernce values.
+
+9) find(): Return the Object. It returns the original array. It doesn't create a copy of it.
+
+10) includes(): Only works for primitive values not reference values.
+
+11) forEach(): Gives easy acces to index.
+
+12) map(): Transform the array.
+
+13) sort(): It converts everything into a string & then sort them using string logic.
+
+14) reverse(): It reverse the array.
+
+15) FIlter(): To filter the data.
+
+16) reduce(): To perform specific operation with prev & curr value.
+
+17) split(): to SPlit the string & return an array.
+
+18) join(): To join the array values.
+
+
