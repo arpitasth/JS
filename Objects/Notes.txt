@@ -1,0 +1,136 @@
+Notes: 
+
+1) Difference between undefined & null: NUll is intentionally defined value by developer but undefined means, A variable has been deifined but not assigned any value to this.
+
+2) If we defined numrical values as a keys in object, It will automatically be converted into sorted format.
+
+Example: 
+	let number = {5: "true", 4: "People", 1: "NUm"};
+        console.log(number); // {1: 'NUm', 4: 'People', 5: 'true'}
+
+3) Object.assign() : To copy the Object.
+
+   Example:
+	const person = {name: 'Max'};
+	const person2 = Object.assign({}, person); // {name: 'Max'}
+
+	other way to do it is using spread operator
+
+	const person2 = {...person};
+
+
+4) call(): The call() method of Function instances calls this function with a given this value and arguments provided individually.
+
+Example: 
+	let name = {
+  firstName: 'Arpit',
+  lastName: 'Asthana',
+}
+
+const getFullName = function(homeTown) {
+  console.log(this.firstName + " " + this.lastName + " from " + homeTown);
+}
+
+getFullName.call(name, 'Dehradun'); // Arpit Asthana from Dehradun
+
+let name2  = {
+  firstName: 'Robin',
+  lastName: 'Pandey'
+}
+
+getFullName.call(name2, 'Mumbai'); // Robin Pandey from Mumbai
+
+5) apply(): This works exactly like apply. The only difference between call() & apply() is apply takes other arguments in array list format.
+
+Example: getFullName.apply(name2, ['Mumbai']); // Robin Pandey from Mumbai
+
+6) bind(): It creates a function refernce for future call. It doesn't directly execute the function. It invokes the function later.
+
+Example: 
+let myName = getFullName.bind(name, 'Dehradun');
+console.log(myName); // ƒ (homeTown) {console.log(this.firstName + " " + this.lastName + " from " + homeTown);}
+myName(); // Arpit Asthana from Dehradun
+
+7) 'this' keyword:
+
+// this in global space
+
+console.log(this); // Returns Global Window Object
+
+// this inside a function
+
+function x() {
+  console.log(this); // Returns Global Window OBject in non strict mode. But in case of strict mode, it will return undefined.
+}
+
+// this inside non strict mode - (this substitution)
+
+// If the value of this keyword is undefined or null this keyword will be replaced with globalObject only in non strict mode.
+
+// this keyword value depends on how this is called (window)
+
+x(); // Returns undefined in strict mode.
+window.x(); // Return window object in strict mode.
+
+// this inside a object's method
+
+const obj = {
+  a: 10,
+  x: function() {
+    console.log(this);
+  }
+}
+
+obj.x(); // Returns obj Object.
+
+// What's the difference between function & method?
+// If you define the function inside the object, it is called method.
+
+// call apply bind methods (sharing methods)
+
+const obj2 = {
+  a: 20
+}
+
+obj.x.call(obj2); // Returns {a: 20}
+
+// this inside arrow function
+
+const obj3 ={
+  a: 10,
+  x: () => {
+    console.log(this); // Will behave like a enclosing lexical context.
+  }
+}
+
+obj3.x(); // Return WIndow Obj
+
+// this inside the nested arrow function
+
+const obj4 = {
+  a: 20,
+  x: function() {
+    // Enclosing lexical context
+    const y = () => {
+      console.log(this);
+    }
+    y();
+  }
+}
+
+obj4.x(); // Will return {a: 20, x: ƒ}
+
+// this inside DOM elements => reference to HTML Element
+
+
+
+
+
+
+
+
+
+
+
+
+
