@@ -122,6 +122,32 @@ obj4.x(); // Will return {a: 20, x: ƒ}
 
 // this inside DOM elements => reference to HTML Element
 
+const members = {
+  teamName: 'Blue Rockets', 
+  people: ['Max', 'Manuel'],
+  getTeamMembers() {
+    this.people.forEach(function(p) {
+      console.log(this); // Will return Window object just beacuse this function executes because of forEach not the sorrounding object.
+      console.log(p + ' - ' + this.teamName);
+    })
+  }
+}
+
+members.getTeamMembers();
+
+const members = {
+  teamName: 'Blue Rockets', 
+  people: ['Max', 'Manuel'],
+  getTeamMembers() {
+    this.people.forEach(p => {
+      console.log(this); // Will return the sorrounding object.
+      console.log(p + ' - ' + this.teamName);
+    })
+  }
+}
+
+members.getTeamMembers();
+
 
 
 

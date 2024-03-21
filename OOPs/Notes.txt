@@ -1,0 +1,15 @@
+Notes:
+
+1) typeof: It tells the type of variable
+
+Example: 
+	class Person {
+		name = 'Max'
+	}
+
+	const p = new Person();
+	typeof p // 'Object'
+
+2) instanceof: 
+	p instanceof person // true;
+ 
