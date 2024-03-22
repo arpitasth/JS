@@ -1,0 +1,11 @@
+Note: 
+
+1) Prototype: It is nothing but the connect objects which serves as a fallback objects.
+
+2) __proto__: It is an actual Object which is used in lookup chain to resolve the methods etc.
+
+3) prototype: This is an object which is used to build an __proto__ object using new keyword. It exists on every object which is constructed based on object constructor.
+
+NOte: __proto__ points the prototype object of some Object. prototype at the prototype object that will be assigned as prototype to the object based on somefunction.
+ 
+
